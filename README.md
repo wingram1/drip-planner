@@ -1,4 +1,4 @@
-# Drip-Planner
+# Drip Planner
 
 **THE ORIGINAL PROJECT HAS BEEN MOVED TO:** https://github.com/vcb-projects/drip-planner
 
