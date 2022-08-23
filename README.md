@@ -1,5 +1,7 @@
 # Drip-Planner
 
+**THE ORIGINAL PROJECT HAS BEEN MOVED TO:** https://github.com/vcb-projects/drip-planner
+
 ## Purpose
 
 Under construction. Weather app for long-distance travel that will generate a dynamic forecast based on a trip
