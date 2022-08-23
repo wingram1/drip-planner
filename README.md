@@ -48,8 +48,6 @@ https://wingram1.github.io/drip-planner/
 
 ## Screenshot
 
-![Webpage](./assets/images/README.jpg)
-
 ## Contribution
 
 Originally created as a project for the Vanderbilt Coding Bootcamp by [William Ingram](https://github.com/wingram1), [John Maclellan](https://github.com/j-maclellan), and [Geran Vanatta](https://github.com/geranv1020).
