@@ -18,11 +18,11 @@ export function Map() {
       center={[39.0997, -94.5786]}
       zoom={5}
       id="map"
-      style={{ width: "100%", height: "800px", margin: "0 auto" }}
+      style={{ width: "100%", height: "80vh", margin: "0 auto" }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ3JhdmlkZGQiLCJhIjoiY2wwZDh3eDE2MDZ1OTNrcGYybjhsNmN2diJ9.cPvRZK6WTt_wjQSa-DzblQ"
       />
       <Marker position={[39.739, 104.99]} icon={defaultIcons}>
         <Popup>
