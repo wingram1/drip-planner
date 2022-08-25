@@ -15,17 +15,16 @@ defaultIcons.options.iconRetinaUrl = icon2x;
 export function Map() {
   return (
     <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      scrollWheelZoom={false}
+      center={[39.0997, -94.5786]}
+      zoom={5}
       id="map"
       style={{ width: "100%", height: "800px", margin: "0 auto" }}
     >
       <TileLayer
-        attribution='© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>'
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[51.505, -0.09]}>
+      <Marker position={[39.739, 104.99]} icon={defaultIcons}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
