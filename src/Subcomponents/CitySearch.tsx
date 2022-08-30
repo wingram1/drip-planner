@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import { getCityWeather } from "../utils/getWeather";
+
 export default function CitySearch() {
   // state of search input
   const [inputState, setInputState] = useState("");
 
   // handles search submit
-  const handleCitySearch = (e: React.FormEvent<HTMLInputElement>) => {};
+  const handleCitySearch = (e: React.FormEvent<HTMLInputElement>) => {
+    getCityWeather(inputState);
+  };
 
   return (
     <form

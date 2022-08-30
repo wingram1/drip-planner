@@ -26,6 +26,7 @@ export function Map(props: any) {
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
     39.0997, -94.5786,
   ]);
+  const [mapClicked, setMapClicked] = useState(false);
 
   // to be moved into a subcomponent file
   const MapEventHandler = function () {
@@ -40,10 +41,11 @@ export function Map(props: any) {
       click(e) {
         setSelectedPosition([e.latlng.lat, e.latlng.lng]);
         events.flyTo(e.latlng, 8);
+        setMapClicked(true);
       },
     });
 
-    return selectedPosition ? (
+    return mapClicked ? (
       <Marker
         key={selectedPosition[0]}
         position={selectedPosition}
@@ -55,7 +57,9 @@ export function Map(props: any) {
           {/*  //TODO: API request to get city on click
         //TODO: Display forecast information for city
         //TODO: Button to start trip creation */}
-          You have clicked coordinates {selectedPosition}
+          <div style={{ height: "200px" }}>
+            <h4>You have clicked coordinates {selectedPosition}</h4>
+          </div>
         </Popup>
       </Marker>
     ) : null;
@@ -63,7 +67,7 @@ export function Map(props: any) {
 
   return (
     <MapContainer
-      center={selectedPosition}
+      center={[39.0997, -94.5786]}
       zoom={5}
       id="map"
       style={{ width: "100%", height: "80vh", margin: "0 auto" }}
@@ -73,11 +77,6 @@ export function Map(props: any) {
         url="https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ3JhdmlkZGQiLCJhIjoiY2wwZDh3eDE2MDZ1OTNrcGYybjhsNmN2diJ9.cPvRZK6WTt_wjQSa-DzblQ"
       />
       <MapEventHandler />
-      <Marker position={[0, 0]} icon={defaultIcons}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
     </MapContainer>
   );
 }
