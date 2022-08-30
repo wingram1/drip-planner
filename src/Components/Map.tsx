@@ -8,7 +8,9 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import L, { marker } from "leaflet";
+
+import { getCoordsWeather } from "../utils/getWeather";
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import icon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -32,9 +34,16 @@ export function Map(props: any) {
   const MapEventHandler = function () {
     const markerRef = useRef<any>();
 
+    // render marker popup automatically
     useEffect(() => {
       if (!markerRef.current) return;
       markerRef.current.openPopup();
+    });
+
+    useEffect(() => {
+      if (!mapClicked) return;
+
+      getCoordsWeather(selectedPosition[0], selectedPosition[1]);
     });
 
     const events = useMapEvents({

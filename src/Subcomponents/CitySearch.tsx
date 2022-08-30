@@ -5,10 +5,18 @@ import { getCityWeather } from "../utils/getWeather";
 export default function CitySearch() {
   // state of search input
   const [inputState, setInputState] = useState("");
+  const [inputSubmitted, setInputSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (inputSubmitted) {
+      console.log("hello");
+      getCityWeather(inputState);
+    }
+  });
 
   // handles search submit
-  const handleCitySearch = (e: React.FormEvent<HTMLInputElement>) => {
-    getCityWeather(inputState);
+  const handleCitySearch = () => {
+    setInputSubmitted(true);
   };
 
   return (
@@ -17,6 +25,7 @@ export default function CitySearch() {
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(`inputState: ${inputState}`);
+        handleCitySearch();
       }}
     >
       <input
@@ -27,7 +36,6 @@ export default function CitySearch() {
           setInputState(e.target.value);
           console.log(e.target.value);
         }}
-        onSubmit={handleCitySearch}
       ></input>
       <button type="submit" form="citySearchForm">
         Go!
