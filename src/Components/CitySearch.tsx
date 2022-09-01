@@ -10,7 +10,7 @@ export default function CitySearch() {
   useEffect(() => {
     if (inputSubmitted) {
       console.log("hello");
-      getCityWeather(inputState);
+      console.log(getCityWeather(inputState));
     }
   });
 
