@@ -12,7 +12,6 @@ Under construction. Weather app for long-distance travel that will generate a dy
 
 - Typescript
 - React
-- [Mantine Component Library](https://mantine.dev/)
 - [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)
 - [OpenWeather One Call API](https://openweathermap.org/api)
 - Node.js
