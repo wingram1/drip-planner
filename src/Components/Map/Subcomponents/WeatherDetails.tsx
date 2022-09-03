@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LocaleChart from "./LocaleChart";
 
 export function WeatherDetails(props: any) {
   const [content, setContent] = useState(<p>Loading...</p>);
@@ -11,13 +12,18 @@ export function WeatherDetails(props: any) {
 
     fetch(apiUrl).then((response: any) => {
       if (response.ok) {
-        // log to console to view data
+        console.log(typeof response);
         response.json().then((data: any) => {
           console.log(data.daily);
 
           // return 8-day forecast
           //   TODO: structure the data so it isn't a big blob
-          setContent(<p>{JSON.stringify(data.daily)}</p>);
+          setContent(
+            <div style={{ width: "100%" }}>
+              <LocaleChart weatherData={data.daily} />
+              <button style={{ margin: "0 auto" }}>Start Trip</button>
+            </div>
+          );
         });
       } else {
         // show error message as content

@@ -49,11 +49,11 @@ export function MapEventHandler() {
       icon={defaultIcons}
       ref={markerRef}
     >
-      <Popup>
+      <Popup maxWidth={350}>
         {/*  //TODO: API request to get city on click
         //TODO: Display forecast information for city
         //TODO: Button to start trip creation */}
-        <div style={{ minHeight: "200px", maxHeight: "fit-content" }}>
+        <div style={{ minHeight: "200px", maxHeight: "fit-content", width: "fit-content" }}>
           <h4>You have clicked coordinates {selectedPosition}</h4>
           <WeatherDetails selectedPosition={selectedPosition} />
         </div>
