@@ -49,7 +49,7 @@ export function MapEventHandler() {
       icon={defaultIcons}
       ref={markerRef}
     >
-      <Popup maxWidth={350}>
+      <Popup maxWidth={3500}>
         {/*  //TODO: API request to get city on click
         //TODO: Display forecast information for city
         //TODO: Button to start trip creation */}

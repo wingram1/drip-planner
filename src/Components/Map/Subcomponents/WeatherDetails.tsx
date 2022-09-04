@@ -14,13 +14,14 @@ export function WeatherDetails(props: any) {
       if (response.ok) {
         console.log(typeof response);
         response.json().then((data: any) => {
+          console.log(data.hourly);
           console.log(data.daily);
 
           // return 8-day forecast
           //   TODO: structure the data so it isn't a big blob
           setContent(
             <div style={{ width: "100%" }}>
-              <LocaleChart weatherData={data.daily} />
+              <LocaleChart weatherDataDaily={data.daily} weatherDataHourly={data.hourly} />
               <button style={{ margin: "0 auto" }}>Start Trip</button>
             </div>
           );

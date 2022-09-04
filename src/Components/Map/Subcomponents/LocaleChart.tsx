@@ -23,7 +23,7 @@ ChartJS.register(
 
 // Component renders inside WeatherDetails
 export const LocaleChart = (props: any) => {
-  const { weatherData } = props;
+  const { weatherDataDaily, weatherDataHourly } = props;
 
   const options = {
     responsive: true,
@@ -40,25 +40,27 @@ export const LocaleChart = (props: any) => {
 
   const chartData: any = useMemo(() => {
     return {
-      labels: weatherData.map((day: any) => {
-        return new Date(day.dt * 1000)
-          .toLocaleDateString("en-US", {
-            weekday: "short",
-            month: "numeric",
-            day: "numeric",
-          })
-          .replace(",", "");
+      labels: weatherDataHourly.map((hour: any) => {
+        return new Date(hour.dt * 1000).toISOString().substring(11, 16);
+        //   .toLocaleDateString("en-US", {
+        //     weekday: "short",
+        //     month: "numeric",
+        //     day: "numeric",
+        //   })
+        //   .replace(",", "");
       }),
-      datasets: [{
-        label: "Temperature",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
-        data: weatherData.map((day: any, i: number) => {
-          return day.temp.max;
-        }),
-      }],
+      datasets: [
+        {
+          label: "Temperature",
+          backgroundColor: "rgb(255, 99, 132)",
+          borderColor: "rgb(255, 99, 132)",
+          data: weatherDataHourly.map((hour: any, i: number) => {
+            return hour.temp;
+          }),
+        },
+      ],
     };
-  }, [weatherData]);
+  }, [weatherDataHourly]);
 
   console.log(chartData);
 
