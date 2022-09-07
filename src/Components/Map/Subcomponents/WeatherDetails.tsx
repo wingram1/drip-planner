@@ -21,7 +21,10 @@ export function WeatherDetails(props: any) {
           //   TODO: structure the data so it isn't a big blob
           setContent(
             <div style={{ width: "100%" }}>
-              <LocaleChart weatherDataDaily={data.daily} weatherDataHourly={data.hourly} />
+              <LocaleChart
+                weatherDataDaily={data.daily}
+                weatherDataHourly={data.hourly}
+              />
               <button style={{ margin: "0 auto" }}>Start Trip</button>
             </div>
           );

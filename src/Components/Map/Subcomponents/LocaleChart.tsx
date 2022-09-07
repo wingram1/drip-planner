@@ -2,23 +2,29 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  BarElement,
   PointElement,
   LineElement,
   Title,
   Tooltip,
   Legend,
+  LineController,
+  BarController,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 import { useMemo } from "react";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  BarElement,
   PointElement,
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  LineController,
+  BarController
 );
 
 // Component renders inside WeatherDetails
@@ -33,7 +39,7 @@ export const LocaleChart = (props: any) => {
       },
       title: {
         display: true,
-        text: "8-day Forecast",
+        text: "48-hour Forecast",
       },
     },
   };
@@ -42,6 +48,8 @@ export const LocaleChart = (props: any) => {
     return {
       labels: weatherDataHourly.map((hour: any) => {
         return new Date(hour.dt * 1000).toISOString().substring(11, 16);
+
+        //\\\\\\\\\ 8-day forecast conversion
         //   .toLocaleDateString("en-US", {
         //     weekday: "short",
         //     month: "numeric",
@@ -51,6 +59,7 @@ export const LocaleChart = (props: any) => {
       }),
       datasets: [
         {
+          type: "line" as const,
           label: "Temperature",
           backgroundColor: "rgb(255, 99, 132)",
           borderColor: "rgb(255, 99, 132)",
@@ -58,27 +67,23 @@ export const LocaleChart = (props: any) => {
             return hour.temp;
           }),
         },
+        {
+          type: "bar" as const,
+          label: "Precipitation",
+          backgroundColor: "rgb(75, 192, 192",
+          data: weatherDataHourly.map((hour: any, i: number) => {
+            return hour.pop * 100;
+          }),
+          borderColor: "white",
+          borderWidth: 2,
+        },
       ],
     };
   }, [weatherDataHourly]);
 
   console.log(chartData);
 
-  //   const labels = [1, 2, 3, 4, 5, 6, 7];
-  //   const data = {
-  //     labels: labels,
-  //     datasets: [
-  //       {
-  //         label: "My First Dataset",
-  //         data: [65, 59, 80, 81, 56, 55, 40],
-  //         fill: false,
-  //         borderColor: "rgb(75, 192, 192)",
-  //         tension: 0.1,
-  //       },
-  //     ],
-  //   };
-
-  return <Line options={options} data={chartData} />;
+  return <Chart type="bar" options={options} data={chartData} />;
 };
 
 export default LocaleChart;
