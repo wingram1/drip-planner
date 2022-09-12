@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import LocaleChart from "./LocaleChart";
 
 export function WeatherDetails(props: any) {
-  const [content, setContent] = useState(<p>Loading...</p>);
+  const [weather, setWeather] = useState(null);
+
+  const [displayedData, setDisplayedData] = useState("hourly");
 
   const { selectedPosition } = props;
 
@@ -14,30 +16,42 @@ export function WeatherDetails(props: any) {
       if (response.ok) {
         console.log(typeof response);
         response.json().then((data: any) => {
-          console.log(data.hourly);
-          console.log(data.daily);
-
+          console.log(data);
           // return 8-day forecast
           //   TODO: structure the data so it isn't a big blob
-          setContent(
-            <div style={{ width: "100%" }}>
-              <LocaleChart
-                weatherDataDaily={data.daily}
-                weatherDataHourly={data.hourly}
-              />
-              <button style={{ margin: "0 auto" }}>Start Trip</button>
-            </div>
-          );
+          setWeather(data);
         });
       } else {
         // show error message as content
-        setContent(<p>Error connecting to openweather.com One Call API</p>);
+        setWeather(null);
         throw new Error();
       }
     });
   }, []);
 
-  return <>{content}</>;
+  return (
+    <>
+      {!weather ? (
+        <p>Loading...</p>
+      ) : (
+        <div style={{ width: "100%" }}>
+          <LocaleChart weatherData={weather} displayedData={displayedData} />
+          <button style={{ margin: "0 auto" }}>Start Trip</button>
+          <button
+            onClick={(e) => {
+              console.log("button clicked, toggling displayedData");
+              displayedData === "hourly"
+                ? setDisplayedData("daily")
+                : setDisplayedData("hourly");
+              console.log(displayedData);
+            }}
+          >
+            {displayedData === "hourly" ? "8-Day Forecast" : "48-Hour Forecast"}
+          </button>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default WeatherDetails;
