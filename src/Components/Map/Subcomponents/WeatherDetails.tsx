@@ -6,13 +6,18 @@ export function WeatherDetails(props: any) {
 
   const [displayedData, setDisplayedData] = useState("hourly");
 
-  const { selectedPosition } = props;
+  const { selectedPosition, searchedCity } = props;
 
   // run fetch request once on individual popup render
   useEffect(() => {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${selectedPosition[0]}&lon=${selectedPosition[1]}&units=imperial&appid=9f22897565b785c5e1809cff5dde2ef9`;
+    //
+    if (!selectedPosition && searchedCity) {
+        console.log("Searching for searchedCity " + searchedCity)
+    }
 
-    fetch(apiUrl).then((response: any) => {
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${selectedPosition[0]}&lon=${selectedPosition[1]}&units=imperial&appid=9f22897565b785c5e1809cff5dde2ef9`;
+
+    fetch(forecastUrl).then((response: any) => {
       if (response.ok) {
         console.log(typeof response);
         response.json().then((data: any) => {
@@ -35,6 +40,7 @@ export function WeatherDetails(props: any) {
         <p>Loading...</p>
       ) : (
         <div style={{ width: "100%" }}>
+          <h4>You have clicked coordinates {selectedPosition}</h4>
           <LocaleChart weatherData={weather} displayedData={displayedData} />
           <button style={{ margin: "0 auto" }}>Start Trip</button>
           <button

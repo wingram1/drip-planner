@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getCityWeather } from "../utils/getWeather";
 
-export default function CitySearch() {
+export function CitySearch() {
   // state of search input
   const [inputState, setInputState] = useState("");
   const [inputSubmitted, setInputSubmitted] = useState(false);
@@ -22,6 +22,16 @@ export default function CitySearch() {
   return (
     <form
       id="citySearchForm"
+      style={{
+        zIndex: "2",
+        width: "300px",
+        height: "50px",
+        border: "1px solid black",
+        backgroundColor: "white",
+        position: "absolute",
+        right: "10px",
+        top: "10px",
+      }}
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(`inputState: ${inputState}`);
@@ -43,3 +53,5 @@ export default function CitySearch() {
     </form>
   );
 }
+
+export default CitySearch;

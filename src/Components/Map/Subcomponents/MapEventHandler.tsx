@@ -53,8 +53,14 @@ export function MapEventHandler() {
         {/*  //TODO: API request to get city on click
         //TODO: Display forecast information for city
         //TODO: Button to start trip creation */}
-        <div style={{ minHeight: "200px", maxHeight: "fit-content", width: "fit-content" }}>
-          <h4>You have clicked coordinates {selectedPosition}</h4>
+        <div
+          style={{
+            minHeight: "200px",
+            maxHeight: "fit-content",
+            minWidth: "400px",
+            width: "fit-content",
+          }}
+        >
           <WeatherDetails selectedPosition={selectedPosition} />
         </div>
       </Popup>
