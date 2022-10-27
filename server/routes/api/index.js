@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const userRoutes = require("./city-routes");
+const cityRoutes = require("./city-routes");
 
 router.use("/cities", cityRoutes);
 
