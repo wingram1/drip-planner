@@ -8,9 +8,9 @@ export function Home() {
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <h1 style={{ position: "absolute", left: "60px", zIndex: 2 }}>
+      {/* <h1 style={{ position: "absolute", left: "60px", zIndex: 2 }}>
         Drip Planner
-      </h1>
+      </h1> */}
       <Map locationSelect={locationSelect} />
       <CitySearch />
       <EditTrip />

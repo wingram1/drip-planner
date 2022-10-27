@@ -24,13 +24,13 @@ export function CitySearch() {
       id="citySearchForm"
       style={{
         zIndex: "2",
-        width: "300px",
+        width: "100%",
         height: "50px",
         border: "1px solid black",
         backgroundColor: "white",
         position: "absolute",
-        right: "10px",
-        top: "10px",
+        right: "0",
+        top: "0",
       }}
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -42,12 +42,17 @@ export function CitySearch() {
         id="citySearch"
         name="citySearch"
         placeholder="Search for a City"
+        style={{ width: "85%", height: "90%" }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setInputState(e.target.value);
           console.log(e.target.value);
         }}
       ></input>
-      <button type="submit" form="citySearchForm">
+      <button
+        type="submit"
+        form="citySearchForm"
+        style={{ width: "13%", height: "90%" }}
+      >
         Go!
       </button>
     </form>
