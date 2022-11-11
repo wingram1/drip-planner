@@ -12,10 +12,11 @@ export function WeatherDetails(props: any) {
   useEffect(() => {
     //
     if (!selectedPosition && searchedCity) {
-        console.log("Searching for searchedCity " + searchedCity)
+      console.log("Searching for searchedCity " + searchedCity);
     }
 
     const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${selectedPosition[0]}&lon=${selectedPosition[1]}&units=imperial&appid=9f22897565b785c5e1809cff5dde2ef9`;
+    console.log(forecastUrl);
 
     fetch(forecastUrl).then((response: any) => {
       if (response.ok) {
